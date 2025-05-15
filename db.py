@@ -8,8 +8,8 @@ dotenv.load_dotenv()
 
 # Define the database connection
 db = PostgresqlDatabase(
-    "campsnatch",
-    user="postgres",
+    "database_qes5",
+    user="database_qes5_user",
     password=os.getenv("DB_PASSWORD"),
     host=os.getenv("DB_HOST"),
     port=5432,
@@ -49,7 +49,7 @@ class Tracker(Model):
 # Function to initialize the database
 def initialize_db():
     # db.drop_tables([Tracker])
-    # db.create_tables([Facility,Tracker])
+    db.create_tables([Facility,Tracker])
     # db.create_tables([Device])
     pass
 
