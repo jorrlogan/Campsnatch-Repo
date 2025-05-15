@@ -1,6 +1,5 @@
 # clerk_auth.py
 import os
-import jwt
 import requests
 from fastapi import Header, HTTPException, Depends
 from jwt import PyJWKClient
