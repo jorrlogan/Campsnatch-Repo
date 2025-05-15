@@ -19,12 +19,12 @@ class TrackerRequest(BaseModel):
 
 
 @app.get("/trackers")
-def get_trackers(user_id: str, session=Depends(verify_clerk_token)):
+def get_trackers(user_id: str):
     return service.trackers(user_id)
 
 
 @app.post("/tracker")
-def create_tracker(data: TrackerRequest, session=Depends(verify_clerk_token)):
+def create_tracker(data: TrackerRequest):
     return service.create_tracker(
         data.userId,
         data.deviceToken,
@@ -36,15 +36,15 @@ def create_tracker(data: TrackerRequest, session=Depends(verify_clerk_token)):
 
 
 @app.delete("/trackers/{tracker_id}")
-def delete_tracker(tracker_id: int, user_id: str, session=Depends(verify_clerk_token)):
+def delete_tracker(tracker_id: int, user_id: str):
     return service.delete_tracker(tracker_id, user_id)
 
 
 @app.get("/facilities/{search_string}")
-def get_facilities(search_string: str, session=Depends(verify_clerk_token)):
+def get_facilities(search_string: str):
     return service.get_facilities(search_string)
 
 
 @app.get("/facilities/{facility_id}/availability")
-def get_facility_availability(facility_id: str, session=Depends(verify_clerk_token)):
+def get_facility_availability(facility_id: str):
     return service.get_facility_availability(facility_id)
