@@ -1,6 +1,4 @@
 from peewee import *
-from playhouse.migrate import SqliteMigrator, migrate
-from playhouse.postgres_ext import ArrayField, JSONField
 import os
 import dotenv
 
