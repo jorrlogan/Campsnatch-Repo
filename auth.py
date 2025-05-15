@@ -1,6 +1,6 @@
 # clerk_auth.py
 from fastapi import Header, HTTPException, Depends
-from jwt import PyJWKClient
+from jwt import PyJWKClient, decode as jwt_decode
 
 JWKS_URL = "https://legible-lynx-48.clerk.accounts.dev/.well-known/jwks.json"  # Or use your own Frontend URL + '/.well-known/jwks.json'
 
@@ -15,7 +15,7 @@ def verify_clerk_token(authorization: str = Header(...)):
     try:
         jwks_client = PyJWKClient(JWKS_URL)
         signing_key = jwks_client.get_signing_key_from_jwt(token)
-        decoded = jwt.decode(
+        decoded = jwt_decode(
             token,
             signing_key.key,
             algorithms=["RS256"],
